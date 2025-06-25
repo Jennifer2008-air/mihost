@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting en Internet - Todo lo que necesitas saber</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 1.2rem 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        section {
+            padding: 3rem 0;
+            background-color: white;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta h2::after {
+            background-color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                padding: 0.8rem 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hosting en Internet</h1>
+            <p class="subtitle">Todo lo que necesitas saber sobre alojamiento web</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#que-es">¿Qué es?</a></li>
+            <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+            <li><a href="#tipos">Tipos de Hosting</a></li>
+            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#comparativa">Comparativa</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="que-es">
+            <h2>¿Qué es un Host en Internet?</h2>
+            <p>Un host en internet, también conocido como servidor de alojamiento web, es un servicio que permite a los individuos y organizaciones publicar un sitio web o aplicación web en Internet.</p>
+            
+            <div class="highlight">
+                <p>En términos simples, un host es como el "hogar" de tu sitio web en Internet. Proporciona el espacio y los recursos necesarios para que tu sitio esté accesible las 24 horas del día, los 7 días de la semana.</p>
+            </div>
+            
+            <p>Cuando contratas un servicio de hosting, básicamente estás alquilando espacio en un servidor físico donde se almacenan todos los archivos y datos necesarios para que tu sitio web funcione correctamente.</p>
+        </section>
+        
+        <section id="como-funciona">
+            <h2>¿Cómo funciona el Hosting Web?</h2>
+            <p>El funcionamiento del hosting web puede explicarse en varios pasos clave:</p>
+            
+            <h3>1. Almacenamiento de archivos</h3>
+            <p>Los archivos de tu sitio web (HTML, CSS, imágenes, etc.) se cargan desde tu computadora local al servidor del proveedor de hosting.</p>
+            
+            <h3>2. Asignación de recursos</h3>
+            <p>El proveedor asigna los recursos necesarios (espacio en disco, ancho de banda, capacidad de procesamiento) según el plan contratado.</p>
+            
+            <h3>3. Configuración del servidor</h3>
+            <p>El servidor se configura para servir tu sitio web cuando alguien ingresa tu dominio en un navegador.</p>
+            
+            <h3>4. Resolución DNS</h3>
+            <p>Cuando un usuario escribe tu dirección web, el sistema DNS (Sistema de Nombres de Dominio) traduce el nombre de dominio a la dirección IP del servidor donde está alojado tu sitio.</p>
+            
+            <h3>5. Entrega del contenido</h3>
+            <p>El servidor envía los archivos solicitados al navegador del usuario, que los interpreta y muestra como una página web.</p>
+        </section>
+        
+        <section id="tipos">
+            <h2>Tipos de Hosting Web</h2>
+            <p>Existen varios tipos de servicios de hosting, cada uno diseñado para diferentes necesidades y escalabilidad:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h4>Hosting Compartido</h4>
+                    <p>Varios sitios web comparten los mismos recursos de un servidor. Ideal para sitios pequeños con tráfico moderado.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h4>Servidores VPS</h4>
+                    <p>Virtual Private Server: Un servidor físico dividido en varios servidores virtuales con recursos dedicados.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👑</div>
+                    <h4>Hosting Dedicado</h4>
+                    <p>Tienes un servidor físico completo para tu sitio. Máximo control y rendimiento, pero más costoso.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h4>Hosting en la Nube</h4>
+                    <p>Utiliza múltiples servidores en la nube para mayor escalabilidad y disponibilidad. Paga por lo que usas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h4>Hosting WordPress</h4>
+                    <p>Optimizado específicamente para sitios WordPress, con características y seguridad especializadas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Hosting Reseller</h4>
+                    <p>Permite revender espacio de hosting como si fueras tu propio proveedor de servicios.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="caracteristicas">
+            <h2>Características Clave de un Buen Hosting</h2>
+            
+            <h3>Disponibilidad (Uptime)</h3>
+            <p>El porcentaje de tiempo que el servidor está operativo y accesible. Los mejores proveedores ofrecen 99.9% de uptime.</p>
+            
+            <h3>Velocidad y Rendimiento</h3>
+            <p>Incluye tiempo de respuesta del servidor, capacidad de procesamiento y optimizaciones como caché y CDN.</p>
+            
+            <h3>Almacenamiento</h3>
+            <p>Espacio en disco para tus archivos. Puede ser HDD tradicional o más rápido SSD.</p>
+            
+            <h3>Ancho de Banda</h3>
+            <p>Cantidad de datos que pueden transferirse entre tu sitio y los usuarios en un período determinado.</p>
+            
+            <h3>Seguridad</h3>
+            <p>Incluye certificados SSL, copias de seguridad automáticas, protección contra malware y firewalls.</p>
+            
+            <h3>Soporte Técnico</h3>
+            <p>Disponibilidad de asistencia profesional cuando surgen problemas técnicos.</p>
+            
+            <h3>Escalabilidad</h3>
+            <p>Facilidad para aumentar recursos (CPU, RAM, almacenamiento) según crece tu sitio.</p>
+        </section>
+        
+        <section id="comparativa">
+            <h2>Comparativa de Planes de Hosting</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Compartido</th>
+                        <th>VPS</th>
+                        <th>Dedicado</th>
+                        <th>Cloud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Costo</td>
+                        <td>$3-$10/mes</td>
+                        <td>$20-$100/mes</td>
+                        <td>$100-$500+/mes</td>
+                        <td>$5-$300+/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Recursos</td>
+                        <td>Compartidos</td>
+                        <td>Dedicados (virtuales)</td>
+                        <td>Dedicados completos</td>
+                        <td>Escalables</td>
+                    </tr>
+                    <tr>
+                        <td>Rendimiento</td>
+                        <td>Básico</td>
+                        <td>Bueno</td>
+                        <td>Excelente</td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td>Seguridad</td>
+                        <td>Básica</td>
+                        <td>Buena</td>
+                        <td>Máxima</td>
+                        <td>Buena</td>
+                    </tr>
+                    <tr>
+                        <td>Control</td>
+                        <td>Limitado</td>
+                        <td>Root/Admin</td>
+                        <td>Root completo</td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td>Ideal para</td>
+                        <td>Sitios pequeños, blogs</td>
+                        <td>Sitios medianos, eCommerce</td>
+                        <td>Grandes proyectos, alta demanda</td>
+                        <td>Proyectos variables, startups</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="cta">
+            <h2>¿Listo para elegir tu hosting ideal?</h2>
+            <p>Compara planes y encuentra la mejor solución para tu proyecto web</p>
+            <a href="#" class="btn">Comparar Planes de Hosting</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Información sobre Hosting Web. Todos los derechos reservados.</p>
+            <p>Diseñado para educar sobre los servicios de alojamiento en internet.</p>
+        </div>
+    </footer>
+</body>
+</html>
